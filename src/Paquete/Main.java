@@ -11,6 +11,7 @@ package Paquete;
 public class Main {
     public static void main(String[] args) {
         //1 2 3 probando - juan
-        System.out.println("Hello world! :0");
+        //probando nombre sonion - diego
+        System.out.println("Hello world! D:");
     }
 }
