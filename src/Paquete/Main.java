@@ -10,8 +10,8 @@ package Paquete;
  */
 public class Main {
     public static void main(String[] args) {
-        //1 2 3 probando - juan
-        //probando nombre sonion - diego
+        //V0
+        
         System.out.println("Hello world! D:");
     }
 }
