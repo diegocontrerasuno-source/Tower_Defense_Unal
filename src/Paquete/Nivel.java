@@ -20,6 +20,8 @@ public class Nivel {
     private Linea[] lineas;
     private ListaEnemigos[] poolEnemigos;
     private Random random = new Random();
+    private boolean finSpawn = false;
+    private boolean finNivel = false;
     
     //Constructor
     public Nivel(String nombre, int numeroLineas, int vidaPuerta, ListaEnemigos[] poolEnemigos) {
@@ -40,6 +42,7 @@ public class Nivel {
     
     public void jugar() {
         Timer delaySpawn = new Timer();
+        Timer movimiento = new Timer();
         TimerTask spawnear = new TimerTask() {
             @Override
             public void run() {
@@ -47,13 +50,62 @@ public class Nivel {
             }
             
         };
-        TimerTask detener = new TimerTask() {
+        TimerTask detenerSpawn = new TimerTask() {
             @Override
             public void run() {
                 delaySpawn.cancel();
+                finSpawn = true;
             }
         };
-        delaySpawn.schedule(spawnear, 2000, 1000);
-        delaySpawn.schedule(detener, 23000);
+        TimerTask moverEnemigos = new TimerTask() {
+            @Override
+            public void run() {
+               for(Linea l:lineas) {
+                   l.moverEnemigos();
+               }
+               if(finSpawn) {
+                   detenerNivel(movimiento);
+               }
+               //MUY temporal luego un metodo separado para los ataques de los defensores
+               for(Linea l:lineas) {
+                   l.ataqueDefensor();
+               }
+            } 
+        };
+        
+        delaySpawn.schedule(spawnear, 2000, 5000);
+        delaySpawn.schedule(detenerSpawn, 27000);
+        movimiento.schedule(moverEnemigos, 2000, 2000);
+        
     }
+    public void detenerNivel(Timer movimiento) {
+        int cuentaVacias = 0; 
+        for(Linea l:lineas) {
+            if (l.getEnemigos().isEmpty()) {
+                cuentaVacias++;
+                if(cuentaVacias==numeroLineas) {
+                    movimiento.cancel();
+                    finNivel = true;
+                }
+            }
+        }
+    }
+    
+    //Getters y setters
+    public int getVidaPuerta() {
+        return vidaPuerta;
+    }
+
+    public void setVidaPuerta(int vidaPuerta) {
+        this.vidaPuerta = vidaPuerta;
+    }
+
+    public Linea[] getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(Linea[] lineas) {
+        this.lineas = lineas;
+    }
+    
 }

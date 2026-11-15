@@ -15,11 +15,13 @@ public abstract class Enemigo {
     protected int ataque;
     protected int posLinea;
     protected int posX;
+    protected int id;
     protected Velocidad velocidad;
     protected Faccion faccion;
     
+    
     //constructor
-    public Enemigo(int vidaMax, int vida, int ataque, int posLinea, int posX, Velocidad velocidad, Faccion faccion) {    
+    public Enemigo(int vidaMax, int vida, int ataque, int posLinea, int posX, Velocidad velocidad, Faccion faccion, int id) {    
         this.vidaMax = vidaMax;
         this.vida = vida;
         this.ataque = ataque;
@@ -27,12 +29,39 @@ public abstract class Enemigo {
         this.posX = posX;
         this.velocidad = velocidad;
         this.faccion = faccion;
+        this.id = id;
     }
 
     //Metodos
     public abstract void atacar();
-    public abstract void moverse();
+    public void moverse() {
+        //Temporal pero la idea es q si sea definido desde aqui y luego sea sobreescrito por los q se muevan de otra manera
+        if(posX!=1000) {
+        switch(velocidad) {
+            case MUYLENTO:
+                posX+=20;
+                break;
+            case LENTO:
+                posX+=25;
+                break;
+            case REGULAR:
+                posX+=40;
+                break;
+            case RAPIDO:
+                posX+=50;
+                break;
+            case MUYRAPIDO:
+                posX+=100;
+                break;
+        }
+        }   
+    }
     public abstract void metodosExtra();
+    public boolean perderVida(int dano) {
+        //TEMPORAL PARA TEST PERO PUEDE SER UNA IDEA HACERLO PARECIDO
+        vida -=dano;
+        return (vida<1);
+    }
     
     //getters y setters
 
@@ -90,6 +119,14 @@ public abstract class Enemigo {
 
     public void setFaccion(Faccion faccion) {
         this.faccion = faccion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
 }

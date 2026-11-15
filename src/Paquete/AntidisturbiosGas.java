@@ -10,20 +10,14 @@ package Paquete;
  */
 public class AntidisturbiosGas extends Enemigo{
 
-    public AntidisturbiosGas(int posLinea, int posX) {
-        super(50, 50, 5, posLinea, posX, Velocidad.RAPIDO, Faccion.ESMAD);
+    public AntidisturbiosGas(int posLinea, int posX, int id) {
+        super(50, 50, 5, posLinea, posX, Velocidad.RAPIDO, Faccion.ESMAD,id);
     }
 
     @Override
     public void atacar() {
         
     }
-
-    @Override
-    public void moverse() {
-        
-    }
-
     @Override
     public void metodosExtra() {
         
