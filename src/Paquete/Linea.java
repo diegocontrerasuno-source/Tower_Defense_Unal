@@ -4,7 +4,7 @@
  */
 package Paquete;
 
-
+import java.util.Random;
 /**
  *
  * @author juand
@@ -15,7 +15,7 @@ public class Linea {
     private int numeroTotal;
     private int posY;
     private ListaEnemigos[] poolEnemigos;
-    //private static int pool; <---- no olvidar poner las pools cuado se hagan :0
+    private Random random = new Random();
     
     //constructor
     public Linea(int numeroIndividual, int numeroTotal, ListaEnemigos[] poolEnemigos) {
@@ -26,7 +26,18 @@ public class Linea {
     
     //Metodos 
     public void spawnearEnemigos() {
-        
+        ListaEnemigos enemigoSeleccionado = poolEnemigos[random.nextInt(poolEnemigos.length)];
+        switch(enemigoSeleccionado) {
+            case ANTIDISTURBIOS:
+                System.out.println("Spawn Antidisturbios en la linea "+numeroIndividual);
+                break;
+            case ANTIDISTURBIOSESCUDO:
+                System.out.println("Spawn Antidisturbios escudo en la linea "+numeroIndividual);
+                break;
+            case ANTIDISTURBIOSGAS:
+                System.out.println("Spawn Antidisturbios gas en la linea "+numeroIndividual);
+                break;
+        }
     }
     
     

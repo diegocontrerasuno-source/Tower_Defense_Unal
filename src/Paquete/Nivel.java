@@ -4,7 +4,10 @@
  */
 package Paquete;
 
-
+import javax.swing.*;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  *
  * @author juand
@@ -13,19 +16,19 @@ public class Nivel {
     //Atributos
     private String nombre;
     private int numeroLineas;
-    private Dificultad dificultad;
     private int vidaPuerta;
     private Linea[] lineas;
     private ListaEnemigos[] poolEnemigos;
+    private Random random = new Random();
     
     //Constructor
-    public Nivel(String nombre, int numeroLineas, Dificultad dificultad, int vidaPuerta, ListaEnemigos[] poolEnemigos) {
+    public Nivel(String nombre, int numeroLineas, int vidaPuerta, ListaEnemigos[] poolEnemigos) {
         this.nombre = nombre;
         this.numeroLineas = numeroLineas;
-        this.dificultad = dificultad;
         this.vidaPuerta = vidaPuerta;
         this.poolEnemigos = poolEnemigos;
         lineas = new Linea[numeroLineas];
+        crearLineas();
     }
    
     //Metodos
@@ -33,5 +36,24 @@ public class Nivel {
         for (int i=0;i<numeroLineas;i++) {
             lineas[i] = new Linea(i+1,numeroLineas,poolEnemigos);
         }
+    }
+    
+    public void jugar() {
+        Timer delaySpawn = new Timer();
+        TimerTask spawnear = new TimerTask() {
+            @Override
+            public void run() {
+                lineas[random.nextInt(numeroLineas)].spawnearEnemigos();
+            }
+            
+        };
+        TimerTask detener = new TimerTask() {
+            @Override
+            public void run() {
+                delaySpawn.cancel();
+            }
+        };
+        delaySpawn.schedule(spawnear, 2000, 1000);
+        delaySpawn.schedule(detener, 23000);
     }
 }

@@ -9,5 +9,5 @@ package Paquete;
  * @author juand
  */
 public enum ListaEnemigos {
-    ANTIDISTURBIOS
+    ANTIDISTURBIOS, ANTIDISTURBIOSGAS, ANTIDISTURBIOSESCUDO
 }

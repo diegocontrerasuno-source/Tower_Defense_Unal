@@ -10,8 +10,12 @@ package Paquete;
  */
 public class Main {
     public static void main(String[] args) {
-        //V0.1
+        //V0.2
         
-        System.out.println("Hello world! D:");
+        //TEST
+        ListaEnemigos[] testPool = {ListaEnemigos.ANTIDISTURBIOS,ListaEnemigos.ANTIDISTURBIOS,ListaEnemigos.ANTIDISTURBIOSESCUDO,
+        ListaEnemigos.ANTIDISTURBIOS, ListaEnemigos.ANTIDISTURBIOSESCUDO, ListaEnemigos.ANTIDISTURBIOSGAS};
+        Nivel test = new Nivel("Test",3,1000,testPool);
+        test.jugar();
     }
 }
