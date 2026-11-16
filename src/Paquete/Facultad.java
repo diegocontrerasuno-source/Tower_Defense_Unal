@@ -9,5 +9,5 @@ package Paquete;
  * @author juand
  */
 public enum Facultad {
-    INGENIERIA, CIENCIAS, MEDICINA, ECONOMIA, HUMANAS
+    INGENIERIA, CIENCIAS, MEDICINA, ECONOMIA, HUMANAS, ARTES
 }

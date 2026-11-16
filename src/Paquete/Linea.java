@@ -55,7 +55,6 @@ public class Linea {
     }
     public void ataqueDefensor() {
         //COMPLETAMENTE PARA TESTEAR SE CAMBIA SI O SI
-        synchronized (enemigos) {
         int pos = 0;
         for(Enemigo e:enemigos) {
             int posPrimero = e.posX;
@@ -71,17 +70,16 @@ public class Linea {
                 }
             }
         }
-        }
+        
     }
     public void eliminarEnemigo(int id) {
-        synchronized (enemigos) {
         for(Enemigo e:enemigos) {
             if(e.getId()==id) {
                 enemigos.remove(e);
                 System.out.println("Enemigo abajo id:"+e.getId()+", dist:"+e.getPosX());
             }
         }
-        }
+        
     }
     
     //Getters y Setters
