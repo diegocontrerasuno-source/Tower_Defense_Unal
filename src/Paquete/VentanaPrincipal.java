@@ -4,22 +4,80 @@
  */
 package Paquete;
 
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author juand
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    //Atributos
+    private static int numeroLineas;
     
+    //El resto
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
 
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
+    public VentanaPrincipal(int _numeroLineas) {
+        numeroLineas = _numeroLineas;
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setResizable(false);
+        switch(numeroLineas) {
+            case 1:
+                SlotLinea1.setBackground(Color.red);
+                SlotLinea2.setBackground(Color.red);
+                SlotLinea4.setBackground(Color.red);
+                SlotLinea5.setBackground(Color.red);
+                break;
+            case 2:
+                SlotLinea1.setBackground(Color.red);
+                SlotLinea3.setBackground(Color.red);
+                SlotLinea5.setBackground(Color.red);
+                break;
+            case 3:
+                SlotLinea1.setBackground(Color.red);
+                SlotLinea5.setBackground(Color.red);
+                break;
+            case 4:
+                SlotLinea3.setBackground(Color.red);
+                break;
+            case 5:
+                break;
+        }
+        
     }
-
+    
+    public void crearEnemigo(int slot) {
+        
+        JLabel e = new JLabel();
+        e.setBounds(SlotLinea1.getWidth()-SlotLinea1.getHeight(), 0, SlotLinea1.getHeight(), SlotLinea1.getHeight());
+        e.setBackground(Color.black);
+        e.setOpaque(true);
+        switch(slot) {
+            case 1:
+                SlotLinea1.add(e);
+                break;
+            case 2:
+                SlotLinea2.add(e);
+                break;
+            case 3:
+                SlotLinea3.add(e);
+                break;
+            case 4:
+                SlotLinea4.add(e);
+                break;
+            case 5:
+                SlotLinea5.add(e);
+                break;
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +88,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        PanelNorte = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         PanelCentro = new javax.swing.JPanel();
         Puerta = new javax.swing.JPanel();
         SlotLinea1 = new javax.swing.JPanel();
@@ -38,27 +98,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         SlotLinea3 = new javax.swing.JPanel();
         SlotLinea4 = new javax.swing.JPanel();
         SlotLinea5 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        PanelSuperior = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UNAL-TD");
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-
-        PanelNorte.setBackground(new java.awt.Color(51, 153, 255));
-        PanelNorte.setPreferredSize(new java.awt.Dimension(828, 150));
-
-        javax.swing.GroupLayout PanelNorteLayout = new javax.swing.GroupLayout(PanelNorte);
-        PanelNorte.setLayout(PanelNorteLayout);
-        PanelNorteLayout.setHorizontalGroup(
-            PanelNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
-        );
-        PanelNorteLayout.setVerticalGroup(
-            PanelNorteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(PanelNorte, java.awt.BorderLayout.PAGE_START);
 
         PanelCentro.setBackground(new java.awt.Color(153, 153, 153));
         PanelCentro.setLayout(new java.awt.GridBagLayout());
@@ -78,7 +129,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 25;
@@ -86,21 +137,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         PanelCentro.add(Puerta, gridBagConstraints);
 
         SlotLinea1.setBackground(new java.awt.Color(111, 78, 55));
+        SlotLinea1.setPreferredSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout SlotLinea1Layout = new javax.swing.GroupLayout(SlotLinea1);
         SlotLinea1.setLayout(SlotLinea1Layout);
         SlotLinea1Layout.setHorizontalGroup(
             SlotLinea1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
         );
         SlotLinea1Layout.setVerticalGroup(
             SlotLinea1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 69, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 50;
@@ -110,21 +162,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         PanelCentro.add(SlotLinea1, gridBagConstraints);
 
         SlotLinea2.setBackground(new java.awt.Color(161, 130, 98));
+        SlotLinea2.setPreferredSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout SlotLinea2Layout = new javax.swing.GroupLayout(SlotLinea2);
         SlotLinea2.setLayout(SlotLinea2Layout);
         SlotLinea2Layout.setHorizontalGroup(
             SlotLinea2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
         );
         SlotLinea2Layout.setVerticalGroup(
             SlotLinea2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 69, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 50;
@@ -133,21 +186,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         PanelCentro.add(SlotLinea2, gridBagConstraints);
 
         SlotLinea3.setBackground(new java.awt.Color(111, 78, 55));
+        SlotLinea3.setPreferredSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout SlotLinea3Layout = new javax.swing.GroupLayout(SlotLinea3);
         SlotLinea3.setLayout(SlotLinea3Layout);
         SlotLinea3Layout.setHorizontalGroup(
             SlotLinea3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
         );
         SlotLinea3Layout.setVerticalGroup(
             SlotLinea3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 69, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 50;
@@ -170,7 +224,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 50;
@@ -193,7 +247,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 50;
@@ -201,16 +255,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
         PanelCentro.add(SlotLinea5, gridBagConstraints);
 
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelSuperior.setBackground(new java.awt.Color(0, 153, 153));
+        PanelSuperior.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        javax.swing.GroupLayout PanelSuperiorLayout = new javax.swing.GroupLayout(PanelSuperior);
+        PanelSuperior.setLayout(PanelSuperiorLayout);
+        PanelSuperiorLayout.setHorizontalGroup(
+            PanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 827, Short.MAX_VALUE)
+        );
+        PanelSuperiorLayout.setVerticalGroup(
+            PanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 69, Short.MAX_VALUE)
+        );
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 50;
+        gridBagConstraints.ipadx = 200;
         gridBagConstraints.ipady = 50;
-        gridBagConstraints.weightx = 0.3;
         gridBagConstraints.weighty = 0.2;
-        PanelCentro.add(jPanel7, gridBagConstraints);
+        PanelCentro.add(PanelSuperior, gridBagConstraints);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 118, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 74, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.2;
+        PanelCentro.add(jPanel1, gridBagConstraints);
 
         getContentPane().add(PanelCentro, java.awt.BorderLayout.CENTER);
 
@@ -239,18 +326,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new VentanaPrincipal().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new VentanaPrincipal(numeroLineas).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelCentro;
-    private javax.swing.JPanel PanelNorte;
+    private javax.swing.JPanel PanelSuperior;
     private javax.swing.JPanel Puerta;
     private javax.swing.JPanel SlotLinea1;
     private javax.swing.JPanel SlotLinea2;
     private javax.swing.JPanel SlotLinea3;
     private javax.swing.JPanel SlotLinea4;
     private javax.swing.JPanel SlotLinea5;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

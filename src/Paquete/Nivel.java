@@ -25,6 +25,12 @@ public class Nivel {
     
     //Constructor
     public Nivel(String nombre, int numeroLineas, int vidaPuerta, ListaEnemigos[] poolEnemigos) {
+        VentanaPrincipal v = new VentanaPrincipal(numeroLineas);
+        v.setVisible(true);
+        v.crearEnemigo(1);
+        v.crearEnemigo(2);
+        
+        
         this.nombre = nombre;
         this.numeroLineas = numeroLineas;
         this.vidaPuerta = vidaPuerta;
@@ -75,7 +81,9 @@ public class Nivel {
         
         delaySpawn.schedule(spawnear, 2000, 5000);
         delaySpawn.schedule(detenerSpawn, 27000);
+        delaySpawn.cancel(); //<-----apagado
         movimiento.schedule(moverEnemigos, 2000, 2000);
+        movimiento.cancel();
         
     }
     public void detenerNivel(Timer movimiento) {
@@ -106,6 +114,14 @@ public class Nivel {
 
     public void setLineas(Linea[] lineas) {
         this.lineas = lineas;
+    }
+
+    public int getNumeroLineas() {
+        return numeroLineas;
+    }
+
+    public void setNumeroLineas(int numeroLineas) {
+        this.numeroLineas = numeroLineas;
     }
     
 }
