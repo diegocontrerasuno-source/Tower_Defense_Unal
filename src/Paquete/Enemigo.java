@@ -18,10 +18,11 @@ public abstract class Enemigo {
     protected int id;
     protected Velocidad velocidad;
     protected Faccion faccion;
+    private VentanaPrincipal ventana;
     
     
     //constructor
-    public Enemigo(int vidaMax, int vida, int ataque, int posLinea, int posX, Velocidad velocidad, Faccion faccion, int id) {    
+    public Enemigo(int vidaMax, int vida, int ataque, int posLinea, int posX, Velocidad velocidad, Faccion faccion, int id,VentanaPrincipal ventana) {    
         this.vidaMax = vidaMax;
         this.vida = vida;
         this.ataque = ataque;
@@ -30,30 +31,32 @@ public abstract class Enemigo {
         this.velocidad = velocidad;
         this.faccion = faccion;
         this.id = id;
+        this.ventana = ventana;
     }
 
     //Metodos
     public abstract void atacar();
     public void moverse() {
         //Temporal pero la idea es q si sea definido desde aqui y luego sea sobreescrito por los q se muevan de otra manera
-        if(posX!=1000) {
+        if(posX>0) {
         switch(velocidad) {
             case MUYLENTO:
-                posX+=20;
+                posX-=1;
                 break;
             case LENTO:
-                posX+=25;
+                posX-=2;
                 break;
             case REGULAR:
-                posX+=40;
+                posX-=3;
                 break;
             case RAPIDO:
-                posX+=50;
+                posX-=4;
                 break;
             case MUYRAPIDO:
-                posX+=100;
+                posX-=5;
                 break;
         }
+        ventana.moverEnemigo(id, posX);
         }   
     }
     public abstract void metodosExtra();

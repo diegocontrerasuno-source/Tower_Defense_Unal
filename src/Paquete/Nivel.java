@@ -17,88 +17,102 @@ public class Nivel {
     private String nombre;
     private int numeroLineas;
     private int vidaPuerta;
+    private int totalSpawns;
+    private int numeroSpawns;
     private Linea[] lineas;
     private ListaEnemigos[] poolEnemigos;
     private Random random = new Random();
     private boolean finSpawn = false;
     private boolean finNivel = false;
+    private VentanaPrincipal ventana;
     
     //Constructor
-    public Nivel(String nombre, int numeroLineas, int vidaPuerta, ListaEnemigos[] poolEnemigos) {
-        VentanaPrincipal v = new VentanaPrincipal(numeroLineas);
-        v.setVisible(true);
-        v.crearEnemigo(1);
-        v.crearEnemigo(2);
+    public Nivel(String nombre, int numeroLineas, int vidaPuerta, ListaEnemigos[] poolEnemigos, int totalSpawns) {
+        ventana = new VentanaPrincipal(numeroLineas);
+        ventana.setVisible(true);
         
-        
+        this.totalSpawns = totalSpawns;
         this.nombre = nombre;
         this.numeroLineas = numeroLineas;
         this.vidaPuerta = vidaPuerta;
         this.poolEnemigos = poolEnemigos;
         lineas = new Linea[numeroLineas];
-        crearLineas();
+        switch(numeroLineas) {
+            case 1:
+                lineas[0] = new Linea(3,numeroLineas,poolEnemigos,ventana);
+                break;
+            case 2:
+                lineas[0] = new Linea(2,numeroLineas,poolEnemigos,ventana);
+                lineas[1] = new Linea(4,numeroLineas,poolEnemigos,ventana);
+                break;
+            case 3:
+                lineas[0] = new Linea(2,numeroLineas,poolEnemigos,ventana);
+                lineas[1] = new Linea(3,numeroLineas,poolEnemigos,ventana);
+                lineas[2] = new Linea(4,numeroLineas,poolEnemigos,ventana);
+                break;
+            case 4:
+                lineas[0] = new Linea(1,numeroLineas,poolEnemigos,ventana);
+                lineas[1] = new Linea(2,numeroLineas,poolEnemigos,ventana);
+                lineas[2] = new Linea(4,numeroLineas,poolEnemigos,ventana);
+                lineas[3] = new Linea(5,numeroLineas,poolEnemigos,ventana);
+                break;
+            case 5:
+                lineas[0] = new Linea(1,numeroLineas,poolEnemigos,ventana);
+                lineas[1] = new Linea(2,numeroLineas,poolEnemigos,ventana);
+                lineas[2] = new Linea(3,numeroLineas,poolEnemigos,ventana);
+                lineas[3] = new Linea(4,numeroLineas,poolEnemigos,ventana);
+                lineas[4] = new Linea(5,numeroLineas,poolEnemigos,ventana);
+                break;
+        }
+        
+        this.jugar();
     }
    
     //Metodos
-    public void crearLineas() {
-        for (int i=0;i<numeroLineas;i++) {
-            lineas[i] = new Linea(i+1,numeroLineas,poolEnemigos);
-        }
-    }
     
-    public void jugar() {
-        Timer delaySpawn = new Timer();
-        Timer movimiento = new Timer();
-        TimerTask spawnear = new TimerTask() {
+    private void jugar() {
+    
+        Timer contadorTicksMovimiento = new Timer();
+        TimerTask accionTicks = new TimerTask() {
             @Override
             public void run() {
-                lineas[random.nextInt(numeroLineas)].spawnearEnemigos();
+               for (Linea l:lineas) {
+                   l.moverEnemigos();
+               }
             }
             
         };
-        TimerTask detenerSpawn = new TimerTask() {
+        contadorTicksMovimiento.schedule(accionTicks, 0, 30);
+        
+        Timer refrescar = new Timer();
+        TimerTask refrescarPos = new TimerTask() {
             @Override
             public void run() {
-                delaySpawn.cancel();
-                finSpawn = true;
+               for (Linea l:lineas) {
+                   l.refrescarPosLineas();
+               }
             }
+            
         };
-        TimerTask moverEnemigos = new TimerTask() {
+        refrescar.schedule(refrescarPos, 100);
+        Timer contadorSpawn = new Timer();
+        TimerTask spawns = new TimerTask() {
             @Override
             public void run() {
-               for(Linea l:lineas) {
-                   l.moverEnemigos();
-               }
-               if(finSpawn) {
-                   detenerNivel(movimiento);
-               }
-               //MUY temporal luego un metodo separado para los ataques de los defensores
-               for(Linea l:lineas) {
-                   l.ataqueDefensor();
-               }
-            } 
-        };
-        
-        delaySpawn.schedule(spawnear, 2000, 5000);
-        delaySpawn.schedule(detenerSpawn, 27000);
-        delaySpawn.cancel(); //<-----apagado
-        movimiento.schedule(moverEnemigos, 2000, 2000);
-        movimiento.cancel();
-        
-    }
-    public void detenerNivel(Timer movimiento) {
-        int cuentaVacias = 0; 
-        for(Linea l:lineas) {
-            if (l.getEnemigos().isEmpty()) {
-                cuentaVacias++;
-                if(cuentaVacias==numeroLineas) {
-                    movimiento.cancel();
-                    finNivel = true;
-                }
+               spawn();
             }
-        }
+        };
+        contadorSpawn.schedule(spawns, 5000, 3000);
     }
     
+    private void spawn() {
+        if(numeroSpawns < totalSpawns) {
+            lineas[random.nextInt(numeroLineas)].spawnearEnemigos();
+            numeroSpawns +=1;
+        }
+
+    }
+   
     //Getters y setters
     public int getVidaPuerta() {
         return vidaPuerta;

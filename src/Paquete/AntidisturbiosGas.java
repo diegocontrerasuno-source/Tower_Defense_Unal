@@ -10,8 +10,8 @@ package Paquete;
  */
 public class AntidisturbiosGas extends Enemigo{
 
-    public AntidisturbiosGas(int posLinea, int posX, int id) {
-        super(50, 50, 5, posLinea, posX, Velocidad.RAPIDO, Faccion.ESMAD,id);
+    public AntidisturbiosGas(int posLinea, int posX, int id, VentanaPrincipal ventana) {
+        super(50, 50, 5, posLinea, posX, Velocidad.RAPIDO, Faccion.ESMAD,id,ventana);
     }
 
     @Override

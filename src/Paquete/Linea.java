@@ -17,34 +17,42 @@ public class Linea {
     private static int ids = 0;
     private int numeroIndividual;
     private int numeroTotal;
-    private int posY;
+    private int posXLinea;
     private ListaEnemigos[] poolEnemigos;
     private Random random = new Random();
     private List<Enemigo> enemigos = new CopyOnWriteArrayList<>();
+    private VentanaPrincipal ventana;
     
     //constructor
-    public Linea(int numeroIndividual, int numeroTotal, ListaEnemigos[] poolEnemigos) {
+    public Linea(int numeroIndividual, int numeroTotal, ListaEnemigos[] poolEnemigos,VentanaPrincipal ventana) {
         this.numeroIndividual = numeroIndividual;
         this.numeroTotal = numeroTotal;
         this.poolEnemigos = poolEnemigos;
+        this.ventana = ventana;
     }
     
     //Metodos 
+    public void refrescarPosLineas() {
+        posXLinea = ventana.getXLineas();
+    }
     public void spawnearEnemigos() {
         ListaEnemigos enemigoSeleccionado = poolEnemigos[random.nextInt(poolEnemigos.length)];
         ids++;
         switch(enemigoSeleccionado) {
             case ANTIDISTURBIOS:
-                enemigos.add(new Antidisturbios(numeroIndividual,0,ids));
+                enemigos.add(new Antidisturbios(numeroIndividual,posXLinea,ids,ventana));
                 System.out.println("Spawn Antidisturbios, linea "+numeroIndividual);
+                ventana.crearEnemigo(numeroIndividual,ids);
                 break;
             case ANTIDISTURBIOSESCUDO:
-                enemigos.add(new AntidisturbiosEscudo(numeroIndividual,0,ids));
+                enemigos.add(new AntidisturbiosEscudo(numeroIndividual,posXLinea,ids,ventana));
                 System.out.println("Spawn Antidisturbios escudo, linea "+numeroIndividual);
+                ventana.crearEnemigo(numeroIndividual,ids);
                 break;
             case ANTIDISTURBIOSGAS:
-                enemigos.add(new AntidisturbiosGas(numeroIndividual,0,ids));
+                enemigos.add(new AntidisturbiosGas(numeroIndividual,posXLinea,ids,ventana));
                 System.out.println("Spawn Antidisturbios gas, linea "+numeroIndividual);
+                ventana.crearEnemigo(numeroIndividual,ids);
                 break;
         }
     }
