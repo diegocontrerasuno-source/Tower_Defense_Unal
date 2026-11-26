@@ -61,11 +61,17 @@ public class Linea {
             e.moverse();
         }
     }
+    public void spritesEnemigos() {
+        for(Enemigo e:enemigos) {
+            e.refrescarSprite();
+            e.ciclarSprite();
+        }
+    }
     public void ataqueDefensor() {
         //COMPLETAMENTE PARA TESTEAR SE CAMBIA SI O SI
-        int pos = 0;
+        double pos = 0;
         for(Enemigo e:enemigos) {
-            int posPrimero = e.posX;
+            double posPrimero = e.posX;
             if (e.getPosX()>posPrimero) {
                 posPrimero = e.posX;
             }

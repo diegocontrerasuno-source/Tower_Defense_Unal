@@ -5,10 +5,12 @@
 package Paquete;
 
 import java.awt.Color;
+import java.awt.Image;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -58,9 +60,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public void crearEnemigo(int slot, int id) {
         JLabel e = new JLabel();
-        e.setBounds(SlotLinea1.getWidth(), 0, SlotLinea1.getHeight(), SlotLinea1.getHeight());
-        e.setBackground(Color.black);
-        e.setOpaque(true);
+        e.setBounds(SlotLinea1.getWidth(), 0, SlotLinea1.getHeight()/2, SlotLinea1.getHeight());
         e.setName(""+id);
         enemigos.add(e);
         switch(slot) {
@@ -82,16 +82,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         PanelCentro.repaint();
     }
-    public void moverEnemigo(int id, int x) {
+    public void moverEnemigo(int id, double x) {
        for (JLabel e:enemigos) {
            if (e.getName().equals(""+id)) {
-               e.setLocation(x, e.getY());
+               e.setLocation((int)Math.round(x), e.getY());
+               }
            }
-       }
+    }
+    public void spriteEnemigo(int id, ImageIcon[] sprites,int spriteNuevo) {
+       for (JLabel e:enemigos) {
+           if (e.getName().equals(""+id)) {
+               e.setIcon(sprites[spriteNuevo]);
+               
+               }
+           }
     }
     
     public int getXLineas() {
         return SlotLinea1.getWidth();
+    }
+    public int getYLineas() {
+        return SlotLinea1.getHeight();
     }
     
     /**

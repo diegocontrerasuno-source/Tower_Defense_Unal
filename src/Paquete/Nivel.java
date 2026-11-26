@@ -82,7 +82,7 @@ public class Nivel {
             }
             
         };
-        contadorTicksMovimiento.schedule(accionTicks, 0, 30);
+        contadorTicksMovimiento.schedule(accionTicks, 0, 16);
         
         Timer refrescar = new Timer();
         TimerTask refrescarPos = new TimerTask() {
@@ -103,6 +103,18 @@ public class Nivel {
             }
         };
         contadorSpawn.schedule(spawns, 5000, 3000);
+        
+        Timer sprites = new Timer();
+        TimerTask ciclarSprites = new TimerTask() {
+            @Override
+            public void run() {
+               for (Linea l:lineas) {
+                   l.spritesEnemigos();
+               }
+            }
+            
+        };
+        sprites.schedule(ciclarSprites, 5000, 1000);
     }
     
     private void spawn() {
