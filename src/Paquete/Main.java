@@ -10,7 +10,7 @@ package Paquete;
  */
 public class Main {
     public static void main(String[] args) {
-        //V0.51
+        //V0.52
        
         //TEST
         ListaEnemigos[] testPool = {ListaEnemigos.ANTIDISTURBIOS,ListaEnemigos.ANTIDISTURBIOS,ListaEnemigos.ANTIDISTURBIOSESCUDO,

@@ -14,7 +14,7 @@ public abstract class Defensor {
     protected int vida;
     protected int ataque;
     protected int nivel = 1;
-    protected int[] slot; //[2]-->[atras o deltante de la puerta(0,1) , linea]
+    protected int[] slot; 
     protected Facultad facultad;
     
     //Constructor

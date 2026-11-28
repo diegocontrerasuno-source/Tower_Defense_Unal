@@ -115,9 +115,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         PanelCentro = new javax.swing.JPanel();
         Puerta = new javax.swing.JPanel();
         SlotLinea1 = new javax.swing.JPanel();
@@ -126,13 +123,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         SlotLinea4 = new javax.swing.JPanel();
         SlotLinea5 = new javax.swing.JPanel();
         PanelSuperior = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-
-        jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel2");
-
-        jLabel3.setText("jLabel3");
+        BotonCerrar = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        LineaInterior1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        LineaInterior2 = new javax.swing.JPanel();
+        LineaInterior3 = new javax.swing.JPanel();
+        LineaInterior4 = new javax.swing.JPanel();
+        LineaInterior5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UNAL-TD");
@@ -143,16 +155,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         PanelCentro.setLayout(new java.awt.GridBagLayout());
 
         Puerta.setBackground(new java.awt.Color(0, 0, 0));
+        Puerta.setPreferredSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout PuertaLayout = new javax.swing.GroupLayout(Puerta);
         Puerta.setLayout(PuertaLayout);
         PuertaLayout.setHorizontalGroup(
             PuertaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         PuertaLayout.setVerticalGroup(
             PuertaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 270, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -160,7 +173,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1;
         gridBagConstraints.weightx = 0.1;
         PanelCentro.add(Puerta, gridBagConstraints);
 
@@ -173,7 +185,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 150;
         gridBagConstraints.ipady = 45;
-        gridBagConstraints.weightx = 0.8;
+        gridBagConstraints.weightx = 0.9;
         gridBagConstraints.weighty = 0.2;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
         PanelCentro.add(SlotLinea1, gridBagConstraints);
@@ -230,17 +242,111 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         PanelSuperior.setBackground(new java.awt.Color(0, 153, 153));
         PanelSuperior.setPreferredSize(new java.awt.Dimension(0, 0));
+        PanelSuperior.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout PanelSuperiorLayout = new javax.swing.GroupLayout(PanelSuperior);
-        PanelSuperior.setLayout(PanelSuperiorLayout);
-        PanelSuperiorLayout.setHorizontalGroup(
-            PanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        jPanel2.setLayout(new java.awt.GridLayout(2, 0));
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(1000, 91));
+        jPanel3.setLayout(new java.awt.GridLayout(0, 9));
+
+        jLabel1.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("jLabel1");
+        jLabel1.setOpaque(true);
+        jPanel3.add(jLabel1);
+
+        jLabel2.setBackground(new java.awt.Color(102, 102, 255));
+        jLabel2.setText("jLabel1");
+        jLabel2.setOpaque(true);
+        jPanel3.add(jLabel2);
+
+        jLabel3.setBackground(new java.awt.Color(51, 255, 51));
+        jLabel3.setText("jLabel1");
+        jLabel3.setOpaque(true);
+        jPanel3.add(jLabel3);
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("jLabel1");
+        jLabel4.setOpaque(true);
+        jPanel3.add(jLabel4);
+
+        jLabel5.setBackground(new java.awt.Color(255, 0, 255));
+        jLabel5.setText("jLabel1");
+        jLabel5.setOpaque(true);
+        jPanel3.add(jLabel5);
+
+        jLabel6.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel6.setText("jLabel1");
+        jLabel6.setOpaque(true);
+        jPanel3.add(jLabel6);
+
+        jLabel7.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel7.setText("jLabel1");
+        jLabel7.setOpaque(true);
+        jPanel3.add(jLabel7);
+
+        jLabel8.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel8.setText("jLabel1");
+        jLabel8.setOpaque(true);
+        jPanel3.add(jLabel8);
+
+        jLabel9.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel9.setText("jLabel1");
+        jLabel9.setOpaque(true);
+        jPanel3.add(jLabel9);
+
+        jPanel2.add(jPanel3);
+
+        jScrollPane1.setViewportView(jPanel2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.8;
+        PanelSuperior.add(jScrollPane1, gridBagConstraints);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 166, Short.MAX_VALUE)
         );
-        PanelSuperiorLayout.setVerticalGroup(
-            PanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 246, Short.MAX_VALUE)
         );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.2;
+        PanelSuperior.add(jPanel1, gridBagConstraints);
+
+        BotonCerrar.setText("X");
+        BotonCerrar.setPreferredSize(new java.awt.Dimension(0, 0));
+        BotonCerrar.addActionListener(this::BotonCerrarActionPerformed);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        PanelSuperior.add(BotonCerrar, gridBagConstraints);
+
+        jLabel10.setText("jLabel10");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 0.3;
+        PanelSuperior.add(jLabel10, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -249,33 +355,92 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 495;
         gridBagConstraints.ipady = 45;
-        gridBagConstraints.weighty = 0.2;
+        gridBagConstraints.weighty = 0.4;
         PanelCentro.add(PanelSuperior, gridBagConstraints);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(0, 0));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 62, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 51, Short.MAX_VALUE)
-        );
+        LineaInterior1.setPreferredSize(new java.awt.Dimension(0, 0));
+        LineaInterior1.setLayout(new java.awt.GridLayout(0, 2));
+        LineaInterior1.add(jButton2);
+        LineaInterior1.add(jButton3);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.2;
-        PanelCentro.add(jPanel1, gridBagConstraints);
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        PanelCentro.add(LineaInterior1, gridBagConstraints);
+
+        LineaInterior2.setLayout(new java.awt.GridLayout(0, 2));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        PanelCentro.add(LineaInterior2, gridBagConstraints);
+
+        javax.swing.GroupLayout LineaInterior3Layout = new javax.swing.GroupLayout(LineaInterior3);
+        LineaInterior3.setLayout(LineaInterior3Layout);
+        LineaInterior3Layout.setHorizontalGroup(
+            LineaInterior3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        LineaInterior3Layout.setVerticalGroup(
+            LineaInterior3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        PanelCentro.add(LineaInterior3, gridBagConstraints);
+
+        javax.swing.GroupLayout LineaInterior4Layout = new javax.swing.GroupLayout(LineaInterior4);
+        LineaInterior4.setLayout(LineaInterior4Layout);
+        LineaInterior4Layout.setHorizontalGroup(
+            LineaInterior4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        LineaInterior4Layout.setVerticalGroup(
+            LineaInterior4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        PanelCentro.add(LineaInterior4, gridBagConstraints);
+
+        javax.swing.GroupLayout LineaInterior5Layout = new javax.swing.GroupLayout(LineaInterior5);
+        LineaInterior5.setLayout(LineaInterior5Layout);
+        LineaInterior5Layout.setHorizontalGroup(
+            LineaInterior5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        LineaInterior5Layout.setVerticalGroup(
+            LineaInterior5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
+        PanelCentro.add(LineaInterior5, gridBagConstraints);
 
         getContentPane().add(PanelCentro, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCerrarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_BotonCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +468,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCerrar;
+    private javax.swing.JPanel LineaInterior1;
+    private javax.swing.JPanel LineaInterior2;
+    private javax.swing.JPanel LineaInterior3;
+    private javax.swing.JPanel LineaInterior4;
+    private javax.swing.JPanel LineaInterior5;
     private javax.swing.JPanel PanelCentro;
     private javax.swing.JPanel PanelSuperior;
     private javax.swing.JPanel Puerta;
@@ -311,9 +482,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel SlotLinea3;
     private javax.swing.JPanel SlotLinea4;
     private javax.swing.JPanel SlotLinea5;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
